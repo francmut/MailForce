@@ -15,7 +15,7 @@ Send notification of a job application;
 <script>
 jQuery(document).ready(function($) {
     // sends a notification to a preset email a
-    window.getStep3() = function(email) {
+    window.getStep3 = function(email) {
         $.ajax({
             type: "POST",
             url: '/notify/'+email,
@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
     }
     
     // sends a canned response to the applicant
-    window.getStep4() = function(email) {
+    window.getStep4 = function(email) {
         $.ajax({
             type: "POST",
             url: '/email/'+email,
