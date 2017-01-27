@@ -32,6 +32,7 @@ class RequestListener {
         $rate_limiter = new RateLimiter(new ThrottlerFactory(), new HydratorFactory(), $cache_adapter, $limit, $window);
 
         $mail_throttler = $rate_limiter->get('/mailto');
+        $notify_throttler = $rate_limiter->get('/notify');
         
 
         $request  = $event->getRequest()->getRequestUri();
@@ -41,11 +42,17 @@ class RequestListener {
             
         }
 
+        if (strpos($request, 'notify')) {
+
+            $notify_throttler->hit();
+            
+        }
+
         if (!$mail_throttler->access()) {
             
             $payload = array(
                 'status' => 'error',
-                'message' => 'You have been rate limited'
+                'message' => 'Too many requests'
             );
             $event->setResponse(new Response(json_encode($payload), 200, array('content-type' => 'application/json')));
 
