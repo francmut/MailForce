@@ -1,0 +1,23 @@
+{
+    "name": "francmut/mailforce",
+    "description": "A demo implementation of an app for sending emails from client-side javascript (Backend)",
+    "require": {
+        "php": ">=5.4.0",
+        "swiftmailer/swiftmailer": "5.4.5",
+        "vlucas/phpdotenv": "2.4.*",
+        "symfony/http-kernel": "^3.2",
+        "symfony/routing": "^3.2",
+        "sunspikes/php-ratelimiter": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "MailForce\\": "app/lib/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Francmut",
+            "email": ""
+        }
+    ]
+}
